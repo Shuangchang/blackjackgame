@@ -58,7 +58,7 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, '/public')));
 // app.use(express.static(path.normalize(path.join(__dirname, '/client'))));
 // app.use('/scripts', express.static(path.join(process.env.PWD, '/scripts')));
-app.use(express.static(path.join(process.env.PWD, '/public')));
+app.use(express.static(path.join(process.env.PWD + '/public')));
 
 const passportConfig = require('./routes/app-passport')(passport,User,LocalStrategy,bcrypt);
 
