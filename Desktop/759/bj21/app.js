@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
 
 app.use(flash());
 // view engine setup
-app.set('views', path.join(__dirname, 'client'));
+app.set('views', path.join(__dirname, 'public'));
 // app.set('views', path.join(process.env.PWD, 'client'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -55,10 +55,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.normalize(path.join(__dirname, '/public'))));
-
+// app.use(express.static(path.join(__dirname, '/public')));
 // app.use(express.static(path.normalize(path.join(__dirname, '/client'))));
-// app.use(express.static(path.join(process.env.PWD, '/../client')));
+// app.use('/scripts', express.static(path.join(process.env.PWD, '/scripts')));
+app.use(express.static(path.join(process.env.PWD, '/public')));
 
 const passportConfig = require('./routes/app-passport')(passport,User,LocalStrategy,bcrypt);
 
