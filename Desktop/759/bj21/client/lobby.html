@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Jack 21</title>
+    <link rel="stylesheet" href="style/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <style>
+        p { line-height:18px; }
+        #content { padding:5px; background:#ddd; border-radius:5px; overflow-y: scroll;
+            border:1px solid #CCC; margin-top:10px; height: 250px; }
+        #status { width:100%; display:block; float:left; margin-top:15px; }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <a href="/lobby" class="active"><i class="fa fa-fw fa-home"></i>Lobby</a>
+    <button onclick="createGameData()" id="createGameBtn" ><i class="fa fa-fw fa-gamepad"></i>Create Game</button>
+    <a href="/signout" class="right"><i class="fa fa-fw fa-user"></i>Sign Out</a>
+</div>
+<div class="row">
+    <div class="column" id="gameRooms">
+        <h2>Games</h2>
+    </div>
+    <div class="column" id="chatRooms">
+        <h2>Chat room</h2>
+        <div id="content"></div>
+        <span id="status">Connecting...</span>
+        <br/>
+        <span id="username"></span><input type="text" id="input" disabled="disabled" />
+    </div>
+    <div class="column" id="onlineUsers">
+        <h2>Online users</h2>
+        <ul>
+        </ul>
+    </div>
+</div>
+
+<script src="scripts/purify.min.js"></script>
+<script src="scripts/authLog.js"></script>
+<script src="scripts/socketClient.js"></script>
+</body>
+</html>

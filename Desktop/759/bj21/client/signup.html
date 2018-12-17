@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Jack 21</title>
+    <link rel="stylesheet" href="style/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<form id="signup-form" action="" method="post">
+    <div class="container">
+        <label for="username"><b>Username</b> Please use an email, must be in the following format: characters@characters.domain</label>
+        <input type="email" placeholder="Enter Username" name="username" id="username" minlength="5"
+               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
+        <label for="password"><b>Password</b> Must contain 6 or more characters that are of at least one number, and one uppercase and lowercase letter. </label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" minlength="6"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+
+        <button type="submit" id="signupBtn">Sign up</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+    </div>
+</form>
+<p id="#err-msg"></p>
+<div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+<script src="scripts/authLog.js"></script>
+</body>
+</html>

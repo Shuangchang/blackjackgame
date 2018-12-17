@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blackjack 21</title>
+
+    <link rel="stylesheet" href="../style/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+</head>
+<body onload="getOwner();">
+<div class="topnav">
+    <a href="/lobby"><i class="fa fa-fw fa-home"></i>Lobby</a>
+    <div id="owner"></div>
+    <a href="/signout" class="right"><i class="fa fa-fw fa-user"></i>Sign Out</a>
+</div>
+<div id="board"></div>
+<div class="panel">
+    <div id="dealer"></div>
+</div>
+
+<div id="otherPlayer"></div>
+
+<div id="my">
+    <div id="myCards"></div>
+    <div id="myCoins">My coins: <span id="myScore">100</span></div>
+    <div id="betDiv">
+        <span class="select">
+        <select id="myBet">
+          <option value="0">Please make a bet</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+        </span>
+    </div>
+
+    <div class="row" id="gameCtrl">
+        <button id="hit" disabled>Hit</button>
+        <button id="stand" disabled>Stand</button>
+    </div>
+</div>
+<button id="startGameBtn" disabled>Start</button>
+<button id="readyBtn">Ready To Play</button>
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <span id="msg"></span>
+</div>
+
+<script src="../scripts/authLog.js"></script>
+<script src="../scripts/Card.js"></script>
+<script src="../scripts/gameClient.js"></script>
+</body>
+</html>

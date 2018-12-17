@@ -3,3 +3,22 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  form#login-form(name="login", method="post")
+    div.input
+      span.label Username
+      input(type="text", name="username")
+      br
+      span.label Password
+      input(type="password", name="password")
+      br
+      span.label Remember me
+      input(type="checkbox", name="remember")
+    div.actions
+      input#login(type="submit", value="login", name="login")
+
+  p
+    a('href'="signup") Create new account.
+
+  br
+  p#err-msg
