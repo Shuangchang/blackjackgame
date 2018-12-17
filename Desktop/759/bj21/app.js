@@ -15,6 +15,7 @@ var models = require("./models");
 const User = require('./models/User')(sequelize);
 const bcrypt = require('bcrypt');
 var port = process.env.PORT;
+
 if (port === null || port === "") {
     port = 3000;
 }
@@ -42,10 +43,9 @@ app.use(function(req, res, next) {
 });
 
 app.use(flash());
-process.env.PWD = process.cwd();
 // view engine setup
-// app.set('views', path.join(__dirname, 'client'));
-app.set('views', path.join(process.env.PWD, 'client'));
+app.set('views', path.join(__dirname, 'client'));
+// app.set('views', path.join(process.env.PWD, 'client'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -53,8 +53,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+process.env.PWD = process.cwd();
+
 // app.use(express.static(path.join(__dirname, '/client')));
-app.use(express.static(path.join(process.env.PWD, '/client')));
+app.use('/',express.static(path.join(process.env.PWD, '/client')));
 
 const passportConfig = require('./routes/app-passport')(passport,User,LocalStrategy,bcrypt);
 
