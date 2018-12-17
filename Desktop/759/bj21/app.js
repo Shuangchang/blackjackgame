@@ -74,7 +74,6 @@ models.sequelize.sync().then(function() {
 const AppRouter = require('./routes/app-router');
 new AppRouter(app,passportConfig);
 
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

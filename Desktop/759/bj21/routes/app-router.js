@@ -11,9 +11,6 @@ const Player = require('../models/Player')(sequelize);
 const Chat = require('../models/Chat')(sequelize);
 const Card = require('../models/Card')(sequelize);
 
-// const WebSocket = require('ws'),
-//     wss = new WebSocket.Server({port: 40510});
-    // wss1 = new WebSocket.Server({port: 8080});
 const Deck = require('./deck');
 class AppRouter {
     constructor(app, passport) {
@@ -28,15 +25,6 @@ class AppRouter {
 
         /**** FRONTEND ENDPOINTS  */
         app.get('/', (req, res) => {
-            // if(req.session.page_views){
-            //     req.session.page_views++;
-            //     console.log(req.session);
-            //     console.log("You visited this page " + req.session.page_views + " times");
-            // } else {
-            //     req.session.page_views = 1;
-            //     console.log(req.session);
-            //     console.log("Welcome to this page for the first time!");
-            // }
             return res.redirect('/login');
         });
 
@@ -51,7 +39,6 @@ class AppRouter {
 
         app.get('/joinGame/:gameid', (req, res, next) => {
             if (!req.user) return res.redirect('/lobby');
-            console.log("in joinGame individual");
             res.cookie('gameid',req.params.gameid);
             res.render('game.html');
         });
@@ -87,46 +74,6 @@ class AppRouter {
                     return res.redirect('../lobby');
                 });
             })(req, res, next);
-
-            // User.findOne({
-            //     where: {username: req.body.username}})
-            //     .then((User)=>{
-            //         bcrypt.compare(req.body.password, User.password, function(err, result) {
-            //             let temp_salt = req.cookies.cname + req.headers['user-agent'];
-            //             let check = bcrypt.compareSync(temp_salt, User.pswd_salt);
-            //             if(check){
-            //                 console.log("login success");
-            //                 // console.log(req.body.uname)
-            //                 // console.log(User.username)
-            //                 let name = auth.getUserName(User.username)
-            //                 console.log(name)
-            //
-            //                 res.cookie('username',auth.getUserName(User.username));
-            //                 res.cookie('sessionid',req.sessionID);
-            //                 res.cookie('userid',User.userid);
-            //                 return res.redirect('../lobby');
-            //             }
-            //         });
-            //     })
-            //     .catch(err => {
-            //         console.error('Unable to connect to the database:', err);
-            //     });
-            //     //});
-            //
-            // // if (!auth.validate(req)) return auth.noAccess(res);
-            // // passportConfig.authenticate('local', (err, user) => {
-            // //     console.log('Inside passport.authenticate() callback');
-            // //     console.log(`req.session.passport: ${JSON.stringify(req.session.passport)}`)
-            // //     console.log(`req.user: ${JSON.stringify(req.user)}`)
-            // //     if (err) return res.redirect("/");
-            // //     if (!user) return res.redirect("/");
-            // //     req.logIn(user, (err) => {
-            // //         if (err) return res.redirect("/");
-            // //         /* If login successful, send 201 */
-            // //         return res.sendStatus(201);
-            // //     })
-            // // })(req, res, cb);
-
         });
 
         app.post('/api/signup',
@@ -139,33 +86,24 @@ class AppRouter {
                 console.log("api/signup");
                 let salt = bcrypt.hashSync(req.cookies.cname + req.headers['user-agent'], 10);
                 let hash = bcrypt.hashSync(req.body.password,10);
-                // bcrypt.hash(req.body.password, 10, function(err, hash) {
-
-
-                    console.log("in bcrypt")
-                        User.findOrCreate({where: {username: req.body.username},
-                                defaults: {
-                                    id: uuidv4(),
-                                    username: req.body.username,
-                                    password: hash,
-                                    pswd_salt:salt }})
-                         .spread((user, created) => {
-                             console.log(res.headersSent);
-                                    if(!created){
-                                        console.log("Did not signup")
-                                    }else{
-                                        console.log("go to login")
-                                        res.status(200).json({
-                                            user
-                                        });
-                                    }
-                                })
-                 // }).catch((err) => {
-                 //     console.error('Unable to connect to the database:', err);
-                 //     return res.status(500).json({"error":"Something went wrong. Check your input."});
-                 // });
-
-
+                console.log("in bcrypt");
+                User.findOrCreate({where: {username: req.body.username},
+                    defaults: {
+                        id: uuidv4(),
+                        username: req.body.username,
+                        password: hash,
+                        pswd_salt:salt }})
+                    .spread((user, created) => {
+                        console.log(res.headersSent);
+                        if(!created){
+                            console.log("Did not signup")
+                        }else{
+                            console.log("go to login")
+                            res.status(200).json({
+                                user
+                            });
+                        }
+                    })
         });
 
         app.post('/api/logout', function (req, res, next) {
