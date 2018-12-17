@@ -3,11 +3,14 @@ const session = require('express-session');
 var Sequelize = require("sequelize");
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 var sequelize = new Sequelize(
-        process.env.DBNM,
-        process.env.DBUSRNAME,
-        process.env.DBPSW, {
-        "dialect": "postgres",
-        "storage": "./session.postgres"
+        // process.env.DBNM,
+        // process.env.DBUSRNAME,
+        // process.env.DBPSW,
+    process.env.DATABASE_URL,
+    {
+        dialect: "postgres",
+        storage: "./session.postgres",
+        ssl: true
     });
     sequelize.Sequelize = Sequelize;
 // var myStore = new SequelizeStore({
