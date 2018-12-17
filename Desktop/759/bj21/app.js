@@ -42,9 +42,10 @@ app.use(function(req, res, next) {
 });
 
 app.use(flash());
-
+process.env.PWD = process.cwd();
 // view engine setup
-app.set('views', path.join(__dirname, 'client'));
+// app.set('views', path.join(__dirname, 'client'));
+app.set('views', path.join(process.env.PWD, 'client'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -52,7 +53,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '/client')));
+// app.use(express.static(path.join(__dirname, '/client')));
+app.use(express.static(path.join(process.env.PWD, '/client')));
 
 const passportConfig = require('./routes/app-passport')(passport,User,LocalStrategy,bcrypt);
 
