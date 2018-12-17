@@ -1,3 +1,4 @@
+process.env.PWD = process.cwd();
 var createError = require('http-errors');
 var express = require('express');
 var flash = require('connect-flash');
@@ -54,10 +55,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-process.env.PWD = process.cwd();
-
 // app.use(express.static(path.join(__dirname, '/client')));
-app.use('/',express.static(path.join(process.env.PWD, '/client')));
+app.use(express.static(path.normalize(path.join(process.env.PWD, '/../client'))));
 
 const passportConfig = require('./routes/app-passport')(passport,User,LocalStrategy,bcrypt);
 
