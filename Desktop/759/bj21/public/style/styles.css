@@ -1,0 +1,460 @@
+body {font-family: Arial, Helvetica, sans-serif;background-color: #333333; margin:0}
+form {border: 3px solid #f1f1f1;}
+
+input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.right{
+    position: absolute;
+    right:8px;
+}
+.cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+.container {
+    background-color: #f1f1f1;
+    padding: 16px;
+}
+
+#message {
+    display:none;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#message p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: #4CAF50;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+    content: "✔";
+}
+
+/* Add a red text color and an "x" when the requirements are wrong */
+.invalid {
+    color: #f44336;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    content: "✖";
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+
+}
+
+/* Style the links inside the navigation bar */
+.topnav a , #createGameBtn{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    margin: 0;
+}
+#createGameBtn{
+    margin: 0;
+    width: auto;
+}
+/* Change the color of links on hover */
+.topnav a:hover ,#createGameBtn:hover{
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active , #createGameBtn:active {
+    background-color: #4CAF50;
+    color: white;
+}
+#createGameBtn{
+    background: none;
+}
+.column {
+    float: left;
+    /*width: calc((100vw - 48px)/3);*/
+    padding: 12px;
+    height: 400px;
+}
+#gameRooms{
+    width: 20vw;
+    background-color:#aaa;
+}
+
+#chatRooms{
+    width: calc(100vw - 40vw - 88px);
+    background-color:#bbb;
+}
+#chatRooms #input { border-radius:2px; border:1px solid #ccc; width: calc(100vw - 40vw - 100px);
+     margin-top:10px; padding:5px; }
+
+#onlineUsers{
+    width: 20vw;
+    background-color:#ccc;
+}
+.card {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.card img{
+    padding-top: 8px;
+}
+
+.card p {
+    border: none;
+    padding: 8px 0;
+    margin: 0;
+    color: white;
+    background-color: #4CAF50;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.card a , .card button{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+}
+
+.card button{
+    margin: 0;
+    padding: 0;
+}
+
+.card p:hover, a:hover , #removeGameBtn:hover{
+    opacity: 0.7;
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+#board{
+    width: calc(100vw - 16px);
+    height: 100vh;
+    background-image: url("../images/board.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top:-10vh;
+    z-index: -1;
+}
+.panel{
+    width: 100vw;
+    min-height: 150px;
+    position: absolute;
+    top:72px;
+}
+
+#dealer{
+    margin: 0 auto;
+    width: 45vw;
+    min-height: 150px;
+    text-align: center;
+    background-color: rgba(214, 245, 214, .3);
+    border-radius: 15px;
+}
+#otherPlayer{
+    width: 100vw;
+    position: absolute;
+    top:50vh;
+    left: 10vw;
+}
+/*#otherPlayerName{*/
+    /*position: absolute;*/
+    /*top:35vh;*/
+    /*left: 10vw;*/
+    /*width: 25vw;*/
+/*}*/
+#msg{
+    text-align: center;
+}
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    width: 50vw;
+    position: absolute;
+    top:65vh;
+    left: 25vw;
+}
+
+.alert .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.alert .closebtn:hover {
+    color: black;
+}
+
+ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+ul li {
+    border: 1px solid #ddd; /* Add a thin border to each list item */
+    margin-top: -1px; /* Prevent double borders */
+    background-color: #f6f6f6; /* Add a grey background color */
+    padding: 12px; /* Add some padding */
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.cardDiv{
+    width: 90px;
+    height:120px;
+    display: inline-block;
+}
+#my{
+    position: absolute;
+    width: 100vw;
+    min-height: 300px;
+    top:70vh;
+    background-color: #333333;
+}
+#owner{
+    position: absolute;
+    width: 25vw;
+    top:8px;
+    left: calc((100vw - 25vw)/2);
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+#myCards{
+    position: relative;
+    top:50px;
+    text-align: center;
+    background-color: rgba(214, 245, 214,.8);
+    border-radius: 15px;
+    width: 90vw;
+    min-height: 250px;
+    margin: 0 auto;
+}
+#myCoins{
+    position: absolute;
+    top:0;
+    left: 5vw;
+    padding: 16px;
+    color: #CCCCCC;
+}
+#betDiv {
+    width: 160px;
+    position: absolute;
+    top:0;
+    left:calc(5vw + 140px);
+}
+#betDiv p{
+    color: #CCCCCC;
+}
+.select{
+    position:relative;
+    display:block;
+    margin:4px 0 28px;
+    border-radius:3px;
+    background:#f3f3f3 30%;
+    -webkit-box-shadow:inset 0 0 0 1px rgba(0,0,0,0.2),inset 0 1px 0 1px #fff,0 1px 2px rgba(0,0,0,0.15);
+    -moz-box-shadow:inset 0 0 0 1px rgba(0,0,0,0.2),inset 0 1px 0 1px #fff,0 1px 2px rgba(0,0,0,0.15);box-shadow:inset 0 0 0 1px rgba(0,0,0,0.2),inset 0 1px 0 1px #fff,0 1px 2px rgba(0,0,0,0.15);
+}
+
+.select select{
+    height:40px;
+    margin-bottom:0;
+    line-height:20px;
+    padding:6px 6px 6px 21px;
+    border:0;background:transparent;
+    -webkit-appearance:none;
+    border-radius:3px;
+    color:#666;
+    width:100%;
+}
+
+.select:before{
+    content:"\f0dd";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font-size:14px;
+    color:#666;
+    position:absolute;
+    right:11px;
+    top:8px;
+    text-shadow:0 1px 0 #fff;
+    pointer-events:none;
+}
+
+.select:after{
+    content:'';
+    position:absolute;
+    top:1px;
+    bottom:1px;
+    right:28px;
+    border-left:1px solid rgba(0,0,0,0.1);
+    border-right:1px solid #fff;
+    pointer-events:none;
+}
+
+.select:after,x:-moz-any-link{
+    display:none
+}
+
+.select select,x:-moz-any-link{
+    padding:8px 7px 7px 6px
+}
+
+.select select::-ms-expand {
+    display: none;
+}
+
+#readyBtn, #startGameBtn{
+    width: 15vw;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top:35vh;
+    left:calc((100vw - 15vw)/2);
+}
+#gameCtrl button{
+    width: 15vw;
+    display: inline-block;
+    margin: 4px;
+    border-radius: 5px;
+    background-color: #CCCCCC;
+}
+#gameCtrl{
+    position: absolute;
+    top:0;
+    right:64px;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06D85F;
+}
+
+@media screen and (max-width: 700px){
+    .box{
+        width: 70%;
+    }
+    .popup{
+        width: 70%;
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .navbar a {
+        float: none;
+        display: block;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+}
