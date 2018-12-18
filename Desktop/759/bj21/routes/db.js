@@ -10,6 +10,8 @@ var sequelize = new Sequelize(
     {
         dialect: "postgres",
         storage: "./session.postgres",
+        port: 5432,
+        host: "<heroku host>",
         ssl: true
     });
     sequelize.Sequelize = Sequelize;

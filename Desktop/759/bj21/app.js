@@ -15,11 +15,11 @@ const gameServer = require('./routes/game');
 var models = require("./models");
 const User = require('./models/User')(sequelize);
 const bcrypt = require('bcrypt');
-// var port = process.env.PORT;
-//
-// if (port === null || port === "") {
-//     port = 3000;
-// }
+var port = process.env.PORT;
+
+if (port === null || port === "") {
+    port = 3000;
+}
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
@@ -90,6 +90,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-//app.listen(port);
+app.listen(port);
 
 module.exports = app;
