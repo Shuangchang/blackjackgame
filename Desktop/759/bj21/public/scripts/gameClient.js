@@ -23,7 +23,7 @@ var message;
 var hit, stand;  // objects representing the buttons, so I can enable/disable them
 
 let createUrlParam = ()=>{
-    return 'ws://boiling-tundra-38399.herokuapp.com:8080?username='+getCookie("username");
+    return 'ws://localhost:8080?username='+getCookie("username");
 }
 const ws = new WebSocket(createUrlParam());
 // event emmited when connected

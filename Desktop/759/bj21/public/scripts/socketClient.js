@@ -10,9 +10,9 @@ var status = $('#status');
 var myName = false;
 var myColor = false;
 let createUrlParam = ()=>{
-    return 'ws://boiling-tundra-38399.herokuapp.com:3000?username='+getCookie("username");
+    // return 'ws://boiling-tundra-38399.herokuapp.com:40510?username='+getCookie("username");
 
-    // return 'ws://localhost:40510?username='+getCookie("username");
+    return 'ws://localhost:40510?username='+getCookie("username");
 }
 const ws = new WebSocket(createUrlParam());
 ws.onopen = function () {

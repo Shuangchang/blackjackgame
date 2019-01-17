@@ -1,5 +1,5 @@
 const WebSocket = require('ws'),
-    wss = new WebSocket.Server({port: 3000})
+    wss = new WebSocket.Server({port: 40510})
 const cookieParser = require('cookie-parser');
 let colors = [ 'red', 'green', 'blue', 'magenta', 'purple', 'plum', 'orange' ];
 colors.sort(function(a,b) { return Math.random() > 0.5; } );
